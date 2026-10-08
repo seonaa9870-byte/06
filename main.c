@@ -1,14 +1,41 @@
 #include <stdio.h>
 
-int square (int a)
+int factorial(int a)
 {
-    return (a*a);
+    int i;
+    int res = 1;
+    for(i=0;i<a;i++)
+    {
+        res = res * (i +1);
+    }
+
+    return res;
 }
-int main()
+
+int combination(int n, int r)
 {
-    int a =2;
-    a = square(a);
-    printf(" a = %i\n",a);
+    int up, down ;
+    // 분자계산 : up에 저장
+    up = factorial(n);
+    // 분모계산 : down에 저장
+    down = factorial(n-r) * factorial(r);
+
+    return (up/down);
+}
+int main(void)
+{ 
+    int result;
+    int n, r;
+
+    printf("input n :");
+    scanf("%i", &n);
+
+    printf("input r :");
+    scanf("%i", &r);
+
+    result = combination(n,r);
+
+    printf("the combination result is %i\n", result);
 
     return 0;
 }
